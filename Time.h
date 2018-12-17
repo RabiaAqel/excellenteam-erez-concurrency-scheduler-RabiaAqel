@@ -8,8 +8,23 @@
 
 class Time
 {
-    Time();
-    ~Time ();
+public:
+    Time (unsigned long)
+    {};
+
+    ~Time ()
+    {};
+
+    bool operator> (const Time &rhs)
+    { return true; };
+
+    Time &operator+= (const Time &rhs)
+    {  };
+
+    static unsigned long now();
+
+private:
+
 
 };
 

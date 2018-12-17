@@ -8,6 +8,8 @@
 
 typedef struct ITask
 {
+    virtual ~ITask () = 0;
+
     virtual void run () = 0;
 
     virtual unsigned long getNextRunPeriod () = 0; // in milliseconds

@@ -8,11 +8,10 @@
 #include "SharedPtr.h"
 #include "Time.h"
 #include "ITask.h"
-#include <utility>
 #include <vector>
 
 
-typedef std::pair<Time, SharedPtr<ITASK> > TimedTask;
+typedef std::pair <Time, SharedPtr<ITask> > TimedTask;
 
 class Scheduler
 {
@@ -22,14 +21,14 @@ public:
 
     ~Scheduler ();
 
-    void add ();
+    void add (const SharedPtr<ITASK> task);
 
     void run ();
 
 
 private:
 
-    std::vector<TimedTask> tasks;
+    std::vector <TimedTask> tasks;
 
     // prevent copying
     Scheduler (Scheduler &other);
@@ -37,11 +36,13 @@ private:
     Scheduler &operator= (Scheduler &rhs);
 
     // gets next task to run
-    ITASK scheduleTask ();
+    SharedPtr<ITask> nextTask ();
 
     // drops task when its finished
     void dropTask ();
 };
 
+
+bool operator< (const TimedTask &lhs, const TimedTask &rhs);
 
 #endif //TASKSSCHEDULER_SCHEDULER_H
