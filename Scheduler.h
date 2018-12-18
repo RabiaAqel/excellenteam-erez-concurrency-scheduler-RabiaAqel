@@ -28,6 +28,16 @@ public:
 
 private:
 
+    static const bool DONE = true;
+
+    static const bool SCHEDULING = false;
+
+    static bool m_done;
+
+    bool getStatus () const;
+
+//    void setStatus (bool isDone) const;
+
     std::vector <TimedTask> tasks;
 
     // prevent copying
@@ -45,4 +55,10 @@ private:
 
 bool operator< (const TimedTask &lhs, const TimedTask &rhs);
 
+
+inline bool Scheduler::getStatus () const
+{ return m_done; }
+
+
+\
 #endif //TASKSSCHEDULER_SCHEDULER_H
