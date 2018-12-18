@@ -13,26 +13,24 @@ class Time
 
 public:
 
-    Time (unsigned long)
-    {};
+    Time (unsigned long);
 
-    ~Time ()
-    {};
+    ~Time ();
 
-    Time &operator+= (const Time &rhs)
-    {};
+    unsigned long now () const;
 
-    static unsigned long now();
+    unsigned long get () const;
+
+    void set (unsigned long newTime);
+
+    Time &operator+= (unsigned long rhs);
 
 private:
 
-    timespec m_time;
+    unsigned long m_time;
 
 };
 
-
-bool operator< (const Time &lhs, const Time &rhs)
-{ return true; };
 
 
 #endif //TASKSSCHEDULER_TIME_H
